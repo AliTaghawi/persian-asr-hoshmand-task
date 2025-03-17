@@ -35,7 +35,7 @@ const Modal = () => {
       const id = (+Data[Data.length -1].id + 1).toString() // میشه از پکیج UUID استفاده کرد
       dispatch(addUser({...formInfo, id}))
     } else {
-      dispatch(editUser({formInfo}))
+      dispatch(editUser({...formInfo}))
     }
     dispatch(openClose())
   };
