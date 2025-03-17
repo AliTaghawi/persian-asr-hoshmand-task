@@ -1,17 +1,15 @@
 "use client";
 
-import { setSortBy } from "@redux/features/userData/userDataSlice";
+import { setInitialData, setSortBy } from "@redux/features/userData/userDataSlice";
 import { useDispatch } from "react-redux";
 
-const ThSort = ({ styles, label, sort }) => {
+const ThSort = ({data, styles, label, sort }) => {
   const dispatch = useDispatch();
 
   const sortHandler = () => {
+    dispatch(setInitialData(data))
     dispatch(
-      setSortBy({
-        type: "setSort",
-        payload: sort,
-      })
+      setSortBy(sort)
     );
   };
 
