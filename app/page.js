@@ -1,10 +1,10 @@
-import React from 'react';
+import HomePage from "@templates/HomePage";
 
-const Home = () => {
+const Home = async () => {
+  const res = await fetch("http://localhost:4000/users")
+  const data = await res.json()
   return (
-    <div>
-      سلام این یک تست متن است
-    </div>
+    <HomePage data={data} />
   );
 };
 

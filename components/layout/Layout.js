@@ -1,14 +1,20 @@
-import SearchInput from "@modules/SearchInput";
+import SearchInput from "@elements/SearchInput";
 
 const Layout = ({ children }) => {
+
+  // استایل‌های مشترک هدر و فوتر
+  const styles = " p-4 bg-gradient-to-r from-indigo-50 via-blue-50 to-cyan-50"
+
   return (
     <>
-      <header className="w-full flex justify-between items-center p-4 pt-5 pb-10 bg-gradient-to-r from-red-50 via-fuchsia-50 to-cyan-50">
+      <header className={`w-full pt-5 pb-10 ${styles}`}>
+        <div className="max-w-[1200px] mx-auto flex justify-between items-center text-">
         <h2 className="font-bold text-xl ">پرشین عصر هوشمند</h2>
         <SearchInput />
+        </div>
       </header>
-      <main className="min-h-[700px]">{children}</main>
-      <footer className="text-center p-4 py-8 bg-gradient-to-r from-red-50 via-fuchsia-50 to-cyan-50">
+      <main className="min-h-[520px] ">{children}</main>
+      <footer className={`text-center py-8 ${styles}`}>
         تسک مصاحبه |{" "}
         <a
           className="text-blue-500"

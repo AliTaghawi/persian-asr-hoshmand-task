@@ -19,7 +19,7 @@ const SearchInput = () => {
       <input 
         className="py-2 px-4 rounded-lg border-2 border-cyan-100 w-72 outline-none"
         type="text"
-        placeholder="Search"
+        placeholder="جستجو"
         value={value}
         onChange={changeHandler}
       />
