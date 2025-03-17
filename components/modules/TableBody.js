@@ -4,20 +4,22 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectDisplay,
-  setInitialData,
+  setUsersData,
+  searchTextValue
 } from "@redux/features/userData/userDataSlice";
 import TableRaw from "@elements/TableRaw";
 
 const TableBody = ({ data }) => {
   const dispatch = useDispatch();
   const displayData = useSelector(selectDisplay);
+  const searchText = useSelector(searchTextValue)
   useEffect(() => {
-    dispatch(setInitialData(data));
+    dispatch(setUsersData(data));
   }, []);
 
   return (
     <tbody>
-      {displayData.length
+      {displayData.length || searchText
         ? displayData.map((user) => <TableRaw key={user.id} user={user} />)
         : data.map((user) => <TableRaw key={user.id} user={user} />)}
     </tbody>

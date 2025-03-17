@@ -19,3 +19,4 @@ const modalInfoSlice = createSlice({
 export default modalInfoSlice.reducer
 export const {openClose} = modalInfoSlice.actions
 export const checkOpen = store => store.modalInfo.status
+export const modalType = store => store.modalInfo.type

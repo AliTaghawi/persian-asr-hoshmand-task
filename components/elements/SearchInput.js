@@ -1,9 +1,7 @@
 "use client"
 
-import {
-  searchTextValue,
-  setSearchText,
-} from "@redux/features/searchText/searchSlice";
+;
+import { searchTextValue, setSearchText } from "@redux/features/userData/userDataSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const SearchInput = () => {

@@ -1,13 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import DatePicker from "react-multi-date-picker";
-import persian from "react-date-object/calendars/persian";
-import persian_fa from "react-date-object/locales/persian_fa";
-
-import InputElement from "@elements/InputElement";
-import { openClose } from "@redux/features/modalInfo/modalInfoSlice";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { modalType, openClose } from "@redux/features/modalInfo/modalInfoSlice";
+import FormInputs from "./FormInputs";
+import { addUser, editUser, usersData } from "@redux/features/userData/userDataSlice";
 
 const Modal = () => {
   const [formInfo, setFormInfo] = useState({
@@ -16,22 +13,31 @@ const Modal = () => {
     date: "",
     status: "تایید نشده",
   });
-
   const dispatch = useDispatch();
+  const Data = useSelector(usersData)
+  const formType = useSelector(modalType);
 
-  const selectAndDateStyle = 'block w-96 py-2 px-5 mt-1 border-sky-300 border-2 rounded-lg outline-none'
+  useEffect(()=> {
+    if (formType === "add") return
+    const user = Data.find(user => user.id == formType)
+    console.log(user)
+    setFormInfo({...user})
+  },[formType])
 
-  const closeHandler = () => {
+  const closeHandler = (e) => {
+    e.preventDefault();
     dispatch(openClose());
   };
 
-  const changeHandler = (e) => {
-    setFormInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    console.log(formInfo);
-  };
-
-  const dateChange = (date) => {
-    setFormInfo((prev) => ({ ...prev, date: date.toDate() }));
+  const addEditHandler = (e) => {
+    e.preventDefault();
+    if (formType === "add") {
+      const id = (+Data[Data.length -1].id + 1).toString() // میشه از پکیج UUID استفاده کرد
+      dispatch(addUser({...formInfo, id}))
+    } else {
+      dispatch(editUser({formInfo}))
+    }
+    dispatch(openClose())
   };
 
   return (
@@ -50,43 +56,23 @@ const Modal = () => {
           x
         </span>
         <form
-          className="flex gap-4 p-10 bg-slate-200/80 border-sky-300 backdrop-blur-3xl border-2 rounded-2xl w-fit mx-auto"
+          className="flex flex-col gap-4 p-10 bg-slate-200/80 border-sky-300 backdrop-blur-3xl border-2 rounded-2xl w-fit mx-auto"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="">
-            <InputElement
-              label="نام"
-              name="name"
-              value={formInfo.name}
-              type="text"
-              onChange={changeHandler}
-            />
-            <InputElement
-              label="ایمیل"
-              name="email"
-              value={formInfo.email}
-              type="text"
-              onChange={changeHandler}
-            />
-            <div className="flex flex-col mb-4">
-              <label htmlFor="date">تاریخ ثبت نام: </label>
-              <DatePicker
-                calendar={persian}
-                locale={persian_fa}
-                id="date"
-                style={{ display: "block" }}
-                inputClass={selectAndDateStyle}
-                value={formInfo.date}
-                onChange={dateChange}
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="status">وضعیت:</label>
-              <select id="status" name="status" value={formInfo.status} onChange={changeHandler} className={selectAndDateStyle}>
-                <option value={"تایید شده"}>تایید شده</option>
-                <option value={"تایید نشده"}>تایید نشده</option>
-              </select>
-            </div>
+          <FormInputs formInfo={formInfo} setFormInfo={setFormInfo} />
+          <div className="flex justify-between items-center">
+            <button
+              onClick={addEditHandler}
+              className="bg-green-300/60 py-2 px-7 border border-sky-300 rounded-md"
+            >
+              {formType === "add" ? "ایجاد" : "تغییر"}
+            </button>
+            <button
+              onClick={closeHandler}
+              className="bg-red-300/60 py-2 px-7 border border-sky-300 rounded-md"
+            >
+              انصراف
+            </button>
           </div>
         </form>
       </div>

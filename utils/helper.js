@@ -9,7 +9,7 @@ export const sortUsers = (state) => {
     return 0;
   };
 
-  if (typeof state.sortBy === "string") {
+  if (state.sortBy !== "date") {
     state.revers
       ? state.displayData.sort((a, b) => compare(b, a))
       : state.displayData.sort((a, b) => compare(a, b));
@@ -20,9 +20,12 @@ export const sortUsers = (state) => {
 };
 
 export const filterUsers = (state, searchText) => {
-  state.displayData = state.initialData.filter(
+  state.displayData = state.usersData.filter(
     (user) =>
-      user.name.toLowerCase().includes(searchText) ||
-      user.email.toLowerCase().includes(searchText)
+      (user.name.toLowerCase().includes(searchText.toLowerCase())) ||
+      (user.email.toLowerCase().includes(searchText.toLowerCase()))
   );
+  // if (searchText) {
+  // };
+  // state.displayData = [...state.usersData]
 };

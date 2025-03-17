@@ -8,10 +8,10 @@ const UsersTable = ({ data }) => {
       <table>
         <thead>
           <tr className="border-b-2 border-sky-50">
-            <ThSort styles={`${thStyles} rounded-tr-lg`} label="نام" data={data} sort="name" />
-            <ThSort styles={thStyles} label="ایمیل" data={data} sort="email" />
-            <ThSort styles={thStyles} label="تاریخ عضویت" data={data} sort="date" />
-            <ThSort styles={thStyles} label="وضعیت" data={data} sort="status" />
+            <ThSort styles={`${thStyles} rounded-tr-lg`} label="نام" sort="name" />
+            <ThSort styles={thStyles} label="ایمیل" sort="email" />
+            <ThSort styles={thStyles} label="تاریخ ثبت نام" sort="date" />
+            <ThSort styles={thStyles} label="وضعیت" sort="status" />
             <th className={`${thStyles} rounded-tl-lg border-l-0 cursor-auto`}></th>
           </tr>
         </thead>

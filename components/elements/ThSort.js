@@ -3,7 +3,7 @@
 import { setSortBy } from "@redux/features/userData/userDataSlice";
 import { useDispatch } from "react-redux";
 
-const ThSort = ({data, styles, label, sort }) => {
+const ThSort = ({ styles, label, sort }) => {
   const dispatch = useDispatch();
 
   const sortHandler = () => {
