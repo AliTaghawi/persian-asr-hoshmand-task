@@ -5,6 +5,7 @@
       "@app/*": ["app/*"],
       "@redux/*": ["redux/*"],
       "@models/*": ["models/*"],
+      "@utils/*": ["utils/*"],
       "@api/*": ["app/api/*"],
       "@layout/*": ["components/layout/*"],
       "@modules/*": ["components/modules/*"],
