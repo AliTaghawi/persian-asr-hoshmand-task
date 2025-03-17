@@ -1,16 +1,19 @@
+import AddButton from "@elements/AddButton";
 import SearchInput from "@elements/SearchInput";
 
 const Layout = ({ children }) => {
-
   // استایل‌های مشترک هدر و فوتر
-  const styles = " p-4 bg-gradient-to-r from-indigo-50 via-blue-50 to-cyan-50"
+  const styles = " p-4 bg-gradient-to-r from-indigo-50 via-blue-50 to-cyan-50";
 
   return (
     <>
       <header className={`w-full pt-5 pb-10 ${styles}`}>
-        <div className="max-w-[1200px] mx-auto flex justify-between items-center text-">
-        <h2 className="font-bold text-xl ">پرشین عصر هوشمند</h2>
-        <SearchInput />
+        <div className="max-w-[1200px] mx-auto">
+          <div className=" flex justify-between items-center mb-2">
+            <h2 className="font-bold text-xl">پرشین عصر هوشمند</h2>
+            <AddButton />
+          </div>
+          <SearchInput />
         </div>
       </header>
       <main className="min-h-[520px] ">{children}</main>

@@ -17,7 +17,7 @@ const SearchInput = () => {
   return (
     <>
       <input 
-        className="py-2 px-4 rounded-lg border-2 border-cyan-100 w-72 outline-none"
+        className="py-2 px-4 rounded-lg border-2 border-cyan-200 w-72 outline-none"
         type="text"
         placeholder="جستجو"
         value={value}
