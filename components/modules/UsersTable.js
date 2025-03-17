@@ -1,5 +1,5 @@
-import TableRaw from "@elements/TableRaw";
 import ThSort from "@elements/ThSort";
+import TableBody from "./TableBody";
 
 const UsersTable = ({ data }) => {
   const thStyles = "bg-sky-200 px-4 py-2 border-l-2 border-sky-50 cursor-pointer";
@@ -15,11 +15,7 @@ const UsersTable = ({ data }) => {
             <th className={`${thStyles} rounded-tl-lg border-l-0 cursor-auto`}></th>
           </tr>
         </thead>
-        <tbody>
-          {data.map((user) => (
-            <TableRaw key={user.id} user={user} />
-          ))}
-        </tbody>
+        <TableBody data={data} />
       </table>
     </div>
   );

@@ -9,7 +9,6 @@ const searchSlice = createSlice({
   initialState,
   reducers: {
     setSearchText: (state, actions) => {
-      // console.log("payloed:", actions.payload)
       state.text = actions.payload
     }
   }

@@ -6,7 +6,7 @@ import { setSearchText } from "../searchText/searchSlice";
 const initialState = {
   initialData: [],
   sortBy: "",
-  revers: false,
+  revers: true,
   displayData: [],
 };
 
@@ -38,3 +38,4 @@ const userDataSlice = createSlice({
 
 export default userDataSlice.reducer;
 export const { setInitialData, setSortBy } = userDataSlice.actions;
+export const selectDisplay = (store) => store.userData.displayData

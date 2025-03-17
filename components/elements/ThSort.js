@@ -7,7 +7,6 @@ const ThSort = ({data, styles, label, sort }) => {
   const dispatch = useDispatch();
 
   const sortHandler = () => {
-    dispatch(setInitialData(data))
     dispatch(
       setSortBy(sort)
     );
