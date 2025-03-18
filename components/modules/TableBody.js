@@ -5,14 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectDisplay,
   setUsersData,
-  searchTextValue
+  searchTextValue,
 } from "@redux/features/userData/userDataSlice";
 import TableRaw from "@elements/TableRaw";
+import NotfoundTableRaw from "@elements/NotfoundTableRaw";
 
 const TableBody = ({ data }) => {
   const dispatch = useDispatch();
   const displayData = useSelector(selectDisplay);
-  const searchText = useSelector(searchTextValue)
+  const searchText = useSelector(searchTextValue);
   useEffect(() => {
     dispatch(setUsersData(data));
   }, []);
@@ -21,7 +22,9 @@ const TableBody = ({ data }) => {
     <tbody>
       {displayData.length || searchText
         ? displayData.map((user) => <TableRaw key={user.id} user={user} />)
-        : data.map((user) => <TableRaw key={user.id} user={user} />)}
+        : data.map((user) => <TableRaw key={user.id} user={user} />)
+      }
+      {!displayData.length && searchText ? <NotfoundTableRaw /> : null}
     </tbody>
   );
 };
