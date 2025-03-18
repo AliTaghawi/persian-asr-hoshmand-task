@@ -50,7 +50,7 @@ const Modal = () => {
           className="w-8 h-8 bg-red-400 text-white text-2xl flex justify-center items-center rounded-md mb-5 cursor-pointer"
           onClick={(e) => {
             e.stopPropagation();
-            closeHandler();
+            closeHandler(e);
           }}
         >
           x
